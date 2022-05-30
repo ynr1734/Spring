@@ -1,26 +1,25 @@
 package com.vo;
 
 public class ItemVO {
-	private String id;
+	private int id;
 	private String name;
-	private String price;
+	private double price;
 	
 	public ItemVO() {
-		super();
+		
 	}
 
-	public ItemVO(String id, String name, String price) {
-		super();
+	public ItemVO(int id, String name, double price) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -32,11 +31,11 @@ public class ItemVO {
 		this.name = name;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -44,7 +43,5 @@ public class ItemVO {
 	public String toString() {
 		return "ItemVO [id=" + id + ", name=" + name + ", price=" + price + "]";
 	}
-	
-	
 	
 }

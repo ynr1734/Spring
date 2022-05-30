@@ -6,7 +6,7 @@ import java.util.List;
 import com.frame.Dao;
 import com.vo.ItemVO;
 
-public class ItemDao implements Dao<String, ItemVO> {
+public class ItemDao implements Dao<Integer, ItemVO> {
 
 	@Override
 	public void insert(ItemVO v) {
@@ -14,7 +14,7 @@ public class ItemDao implements Dao<String, ItemVO> {
 	}
 
 	@Override
-	public void delete(String k) {
+	public void delete(Integer k) {
 		System.out.println("Deleted:"+k);
 	}
 
@@ -24,21 +24,21 @@ public class ItemDao implements Dao<String, ItemVO> {
 	}
 
 	@Override
-	public ItemVO select(String k) {
-		ItemVO item = new ItemVO(k,"wallet","10000");
-		return null;
+	public ItemVO select(Integer k) {
+		ItemVO i = new ItemVO(k,"wallet",10000);
+		return i;
 	}
 
 	@Override
-	public List<itemVO> select() {
-		ArrayList<itemVO> list = new ArrayList<itemVO>();
-		list.add(new itemVO("id01", "", "1000"));
-		list.add(new itemVO("id02", "pwd02", "2000"));
-		list.add(new itemVO("id03", "pwd03", "3000"));
-		list.add(new itemVO("id04", "pwd04", "4000"));
-		list.add(new itemVO("id05", "pwd05", "5000"));
+	public List<ItemVO> select() {
+		ArrayList<ItemVO> list = new ArrayList<ItemVO>();
+		list.add(new ItemVO(1, "pants1", 1000));
+		list.add(new ItemVO(2, "pants2", 2000));
+		list.add(new ItemVO(3, "pants3", 3000));
+		list.add(new ItemVO(4, "pants4", 4000));
+		list.add(new ItemVO(5, "pants5", 5000));
 		
-		return null;
+		return list;
 	}
 
 }

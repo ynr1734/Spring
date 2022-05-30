@@ -15,7 +15,7 @@ public class UserDao implements Dao<String, UserVO> {
 
 	@Override
 	public void delete(String k) {
-		
+		System.out.println("Deleted:"+k);
 	}
 
 	@Override

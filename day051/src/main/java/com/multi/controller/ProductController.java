@@ -32,13 +32,13 @@ public class ProductController {
 		return mv;
 	}
 	@RequestMapping("/registerimpl")
-	public ModelAndView registerimpl(ModelAndView mv, ProductVO obj) {
+	public ModelAndView registerimpl(ModelAndView mv, ProductVO p) {
 		mv.setViewName("main");
 		mv.addObject("left", "product/left");
 		try {
-			pbiz.register(obj);
+			pbiz.register(p);
 			mv.addObject("center", "product/registerok");
-			mv.addObject("rproduct", obj);
+			mv.addObject("rproduct", p);
 		} catch (Exception e) {
 			mv.addObject("center", "product/registerfail");
 		}

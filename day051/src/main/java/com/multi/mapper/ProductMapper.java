@@ -15,4 +15,5 @@ public interface ProductMapper {
 	public void update(ProductVO p) throws Exception;
 	public ProductVO select(Integer id) throws Exception;
 	public List <ProductVO> selectall() throws Exception;
+	public int selectcnt() throws Exception;
 }

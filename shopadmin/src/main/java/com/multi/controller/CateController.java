@@ -49,11 +49,10 @@ public class CateController {
 	}
 	
 	@RequestMapping("/detail")
-	public String detail(Model m, Integer id) {
+	public String detail(Model m, Integer id, CateVO obj) {
 		try {
-			
 			biz.get(id);
-			// m.addAttribute("c", obj);
+			m.addAttribute("c", obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

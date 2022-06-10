@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CateMapper">
 	
 	<select id="select" parameterType="Integer" resultType="cateVO">
-		SELECT * FROM CATE WHERE ID=#{id}CONDITIONS EVALUATION REPORT
+		SELECT * FROM CATE WHERE ID=#{id}
 	</select>
 	<select id="selectall" resultType="cateVO">
 		SELECT * FROM CATE

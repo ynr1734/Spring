@@ -19,7 +19,7 @@ class CateSelectAllTests {
 	void contextLoads() {
 		List<CateVO> list = null;
 		try {
-			list = biz.get();
+			list = biz.getmain();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

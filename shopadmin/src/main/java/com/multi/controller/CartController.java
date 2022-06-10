@@ -17,7 +17,7 @@ public class CartController {
 	@Autowired
 	CartBiz biz;
 	
-	@RequestMapping("/select")
+	@RequestMapping("select")
 	public String select(Model m) {
 		List<CartVO> list = null;
 		try {
@@ -30,26 +30,4 @@ public class CartController {
 		return "/index";
 	}
 	
-	@RequestMapping("/detail")
-	public String detail(Model m, Integer id) {
-		CartVO obj = null;
-		try {
-			obj = biz.get(id);
-			m.addAttribute("c", obj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		m.addAttribute("center", "cart/detail");
-		return "/index";
-	}
-	
-	@RequestMapping("/update")
-	public String update(Model m, CartVO obj) {
-		try {
-			biz.modify(obj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "redirect:detail?id="+obj.getId();
-	}
 }

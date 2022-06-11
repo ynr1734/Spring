@@ -95,8 +95,8 @@ public class ProductController {
 	@RequestMapping("/updateimpl")
 	public String updateimpl(Model m, ProductVO p) {
 		// name, price, cid, mf(->imgname)
-		String imgname = p.getMf().getOriginalFilename();
-		p.setImgname(imgname);
+	//	String imgname = p.getMf().getOriginalFilename();
+	//	p.setImgname(imgname);
 		
 		try {
 			biz.modify(p);

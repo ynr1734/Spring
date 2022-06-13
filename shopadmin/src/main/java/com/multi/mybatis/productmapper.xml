@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cate c ON p.cid = c.id
 		INNER JOIN cate c2 ON p.cid = c2.id
 	</select>
-	<select id="selectall3" resultType="productVO">
+	<select id="selectall3" resultType="productAVGVO">
 		SELECT c.name as catename, AVG(p.price) as avg
 		FROM PRODUCT p
 		INNER JOIN cate c ON p.cid = c.id

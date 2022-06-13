@@ -71,10 +71,10 @@ public class ProductController {
 		ProductVO obj = null;
 		List<CateVO> list = null;
 		try {
-			obj = biz.get(id);
 			list = cbiz.get();
-			m.addAttribute("p", obj);
 			m.addAttribute("clist", list);
+			obj = biz.get(id);
+			m.addAttribute("p", obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -82,29 +82,23 @@ public class ProductController {
 		return "/index";
 	}
 	
-	@RequestMapping("/update")
-	public String update(Model m, ProductVO obj) {
-		try {
-			biz.modify(obj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "redirect:detail?id="+obj.getId();
-	}
 
 	@RequestMapping("/updateimpl")
 	public String updateimpl(Model m, ProductVO p) {
-		// name, price, cid, mf(->imgname)
-	//	String imgname = p.getMf().getOriginalFilename();
-	//	p.setImgname(imgname);
+		
+		String iname = p.getMf().getOriginalFilename();
+		if(!(iname.equals(""))) {
+			p.setImgname(iname);
+			Util.saveFile(p.getMf());
+		}
+		System.out.println(p);
 		
 		try {
 			biz.modify(p);
-			Util.saveFile(p.getMf()); 
-			// 파일을 서버에 저장하는 모듈
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return "redirect:select";
 	}
 }

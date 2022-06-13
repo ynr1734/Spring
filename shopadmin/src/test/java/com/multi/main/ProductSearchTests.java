@@ -1,4 +1,4 @@
-package com.multi.product;
+package com.multi.main;
 
 import java.util.List;
 
@@ -6,27 +6,26 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.ProductBiz;
-import com.multi.vo.ProductAVGVO;
+import com.multi.biz.MainBiz;
+import com.multi.vo.ProductVO;
 
 @SpringBootTest
-class ProductSelectTests3 {
+class ProductSearchTests {
 
 	@Autowired
-	ProductBiz biz;
+	MainBiz biz;
 	
 	@Test
 	void contextLoads() {
-		List<ProductAVGVO> list = null;
+		List<ProductVO> list = null;
 		try {
-			list = biz.get3();
-			for (ProductAVGVO obj : list) {
-				System.out.println(obj);
+			list = biz.searchProduct("s");
+			for (ProductVO p : list) {
+				System.out.println(p);
 			}
-		} catch (Exception e) { 
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 	}
 

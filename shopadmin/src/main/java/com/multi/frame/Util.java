@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Util {
 	public static void saveFile(MultipartFile mf) {
 		String dir = "C:\\spring\\shopadmin\\src\\main\\resources\\static\\img\\";
+		String dir2 = "C:\\spring\\shop\\src\\main\\resources\\static\\img\\";
 		byte [] data;
 		String imgname = mf.getOriginalFilename();
 		try {
@@ -14,6 +15,10 @@ public class Util {
 					new FileOutputStream(dir+imgname);
 			fo.write(data);
 			fo.close();
+			FileOutputStream fo2 = 
+					new FileOutputStream(dir2+imgname);
+			fo2.write(data);
+			fo2.close();
 		}catch(Exception e) {
 			
 		}

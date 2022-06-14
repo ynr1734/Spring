@@ -26,4 +26,5 @@ public class CustVO {
 		this.addr = addr;
 		this.pwd = pwd;
 	}
+
 }

@@ -10,6 +10,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cate c ON p.cid = c.id
 		WHERE p.id = #{id}
 	</select>
+		<select id="selectproduct" parameterType="Integer" resultType="productVO">
+		SELECT p.id as id, p.name as name, p.price, p.regdate, p.cid as cid,
+		p.imgname as imgname, c.name as catename FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		WHERE p.cid = #{id}
+	</select>
 	<select id="selectall" resultType="productVO">
 		SELECT p.id as id, p.name as name, p.price, p.regdate, p.cid as cid,
 		p.imgname as imgname, c.name as catename FROM product p

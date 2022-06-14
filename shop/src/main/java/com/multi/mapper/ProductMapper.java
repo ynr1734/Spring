@@ -18,6 +18,6 @@ public interface ProductMapper {
 	public List <ProductVO> selectall() throws Exception;
 	public List <ProductVO> selectall2() throws Exception;
 	public List <ProductAVGVO> selectall3() throws Exception;
-
+	public List <ProductVO> selectproduct(int id) throws Exception;
 	
 }

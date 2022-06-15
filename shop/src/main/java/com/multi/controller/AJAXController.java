@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.multi.biz.CartBiz;
 import com.multi.biz.CateBiz;
 import com.multi.biz.CustBiz;
 import com.multi.biz.ProductBiz;
+import com.multi.vo.CartVO;
 import com.multi.vo.CateVO;
 import com.multi.vo.CustVO;
 import com.multi.vo.ProductAVGVO;
@@ -20,6 +22,18 @@ public class AJAXController {
 	
 	@Autowired
 	CustBiz biz;
+	
+	@Autowired
+	CartBiz cartbiz;
+	
+	@RequestMapping("addcart")
+	public void addcart(String uid, int pid, int cnt) {
+		try {
+			cartbiz.register(new CartVO(uid, pid, cnt));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@RequestMapping("checkid")
 	public String checkid(String id) {

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.CateBiz;
 import com.multi.biz.CustBiz;
+import com.multi.biz.ProductBiz;
 import com.multi.vo.CateVO;
 import com.multi.vo.CustVO;
+import com.multi.vo.ProductVO;
 
 @Controller
 public class MainController {
@@ -23,6 +25,9 @@ public class MainController {
 	
 	@Autowired
 	CateBiz catebiz;
+	
+	@Autowired
+	ProductBiz pbiz;
 	
 	@ModelAttribute("catelist")
 	public List<CateVO> makemenu() {
@@ -39,6 +44,20 @@ public class MainController {
 	@RequestMapping("/")
 	public String main(Model m) {
 		
+		return "main";
+	}
+	
+	@RequestMapping("getproduct")
+	public String getproduct(Model m, int id, String name) {
+		List<ProductVO> plist = null;
+		try {
+			plist = pbiz.selectproduct(id);
+			m.addAttribute("center", "product");
+			m.addAttribute("menu", name);
+			m.addAttribute("plist", plist);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "main";
 	}
 	

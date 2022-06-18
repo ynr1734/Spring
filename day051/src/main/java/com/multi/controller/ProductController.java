@@ -24,6 +24,7 @@ public class ProductController {
 		mv.addObject("center", "product/center");
 		return mv;
 	}
+	
 	@RequestMapping("/register")
 	public ModelAndView register(ModelAndView mv) {
 		mv.setViewName("main");
@@ -31,12 +32,13 @@ public class ProductController {
 		mv.addObject("center", "product/register");
 		return mv;
 	}
+	
 	@RequestMapping("/registerimpl")
-	public ModelAndView registerimpl(ModelAndView mv, ProductVO p) {
+	public ModelAndView registerimpl(ModelAndView mv,ProductVO obj) {
 		mv.setViewName("main");
 		mv.addObject("left", "product/left");
 		try {
-			pbiz.register(p);
+			pbiz.register(obj);
 			int cnt = pbiz.getcnt();
 			mv.addObject("cnt", cnt);
 			mv.addObject("center", "product/registerok");
@@ -45,6 +47,7 @@ public class ProductController {
 		}
 		return mv;
 	}
+	
 	@RequestMapping("/select")
 	public ModelAndView select(ModelAndView mv) {
 		List<ProductVO> list = null;
@@ -59,13 +62,14 @@ public class ProductController {
 		mv.setViewName("main");
 		return mv;
 	}
+	
 	@RequestMapping("/detail")
 	public ModelAndView detail(ModelAndView mv, Integer id) {
 		mv.setViewName("main");
+		mv.addObject("left", "product/left");
 		ProductVO p = null;
 		try {
 			p = pbiz.get(id);
-			mv.addObject("left", "product/left");
 			mv.addObject("center", "product/detail");
 			mv.addObject("dproduct", p);
 		} catch (Exception e) {
@@ -73,6 +77,41 @@ public class ProductController {
 		}
 		return mv;
 		
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(Integer id) {
+		try {
+			pbiz.remove(id);
+		} catch (Exception e) {
+				
+		}
+		return "redirect:select";
+		}
+	
+	@RequestMapping("/update")
+	public ModelAndView update(ModelAndView mv, Integer id) {
+		ProductVO p = null;
+		mv.setViewName("main");
+		mv.addObject("left", "product/left");
+		try {
+			p = pbiz.get(id);
+			mv.addObject("uproduct", p);
+			mv.addObject("center", "product/update");
+		} catch (Exception e) {
+					
+		}
+			return mv;
+		}
+	
+	@RequestMapping("/updateimpl")
+	public String updateimpl(ProductVO p) {
+		try {
+			pbiz.modify(p);
+		} catch (Exception e) {
+				
+		}
+		return "redirect:detail?id="+p.getId();
 	}
 	
 }

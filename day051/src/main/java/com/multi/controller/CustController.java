@@ -24,6 +24,7 @@ public class CustController {
 		mv.addObject("center", "cust/center");
 		return mv;
 	}
+	
 	@RequestMapping("/register")
 	public ModelAndView register(ModelAndView mv) {
 		mv.setViewName("main");
@@ -31,6 +32,7 @@ public class CustController {
 		mv.addObject("center", "cust/register");
 		return mv;
 	}
+	
 	@RequestMapping("/registerimpl")
 	public ModelAndView registerimpl(ModelAndView mv, CustVO obj) {
 		mv.setViewName("main");
@@ -44,6 +46,7 @@ public class CustController {
 		}
 		return mv;
 	}
+	
 	@RequestMapping("/select")
 	public ModelAndView select(ModelAndView mv) {
 		List<CustVO> list = null;
@@ -58,6 +61,7 @@ public class CustController {
 		mv.setViewName("main");
 		return mv;
 	}
+	
 	@RequestMapping("/detail")
 	public ModelAndView detail(ModelAndView mv, String id) {
 		mv.setViewName("main");
@@ -71,7 +75,38 @@ public class CustController {
 			e.printStackTrace();
 		}
 		return mv;
-		
+	}
+	@RequestMapping("/delete")
+	public String delete(String id) {
+		try {
+			biz.remove(id);
+		} catch (Exception e) {
+				
+		}
+		return "redirect:select";
+		}
+	@RequestMapping("/update")
+	public ModelAndView update(ModelAndView mv, String id) {
+		CustVO cust = null;
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		try {
+			cust = biz.get(id);
+			mv.addObject("ucust", cust);
+			mv.addObject("center", "cust/update");
+		} catch (Exception e) {
+					
+		}
+			return mv;
+		}
+	@RequestMapping("/updateimpl")
+	public String updateimpl(CustVO cust) {
+		try {
+			biz.modify(cust);
+		} catch (Exception e) {
+				
+		}
+		return "redirect:detail?id="+cust.getId();
 	}
 	
 }
